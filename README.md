@@ -33,8 +33,8 @@
 
 ### Association
 
-- belongs_to :users
-- has_one :buy_records
+- belongs_to :user
+- has_one :buy_record
 
 ## buy_records テーブル
 
