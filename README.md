@@ -45,8 +45,8 @@
 
 ### Association
 
-- belongs_to :users
-- has_one :item
+- belongs_to :user
+- belongs_to :item
 - has_one :user_address
 
 ##  user_addressテーブル
