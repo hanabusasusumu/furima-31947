@@ -15,7 +15,7 @@ class Item < ApplicationRecord
     validates :message
   end
 
-  with_options numericality: {other_than: 1} do
+  with_options numericality: {other_than: 1, message: 'Select'} do
     validates :category_id
     validates :state_id
     validates :delivery_fee_id
@@ -23,6 +23,6 @@ class Item < ApplicationRecord
     validates :day_id
   end
 
-  validates :price, presence: true, numericality: {greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999}
+  validates :price, presence: true, numericality: {greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999, message: 'Out of setting range'}
 end
 
