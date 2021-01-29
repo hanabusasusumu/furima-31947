@@ -23,7 +23,8 @@ class Item < ApplicationRecord
     validates :day_id
   end
 
-  validates :price, presence: true, format: { with: /\A[0-9]+\z/, message: '半角数字を使用してください' }
+  validates :price, presence: true, format: {with: /\A[0-9]+\z/}, 
+  numericality: {only_integer: true, greater_than: 299, less_than: 10000000}
   
 end
 
