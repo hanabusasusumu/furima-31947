@@ -6,7 +6,7 @@ class OrdersController < ApplicationController
 
   def create
     @user_order = UserOrder.new(order_params)
-    @user_order.save
+      @user_order.save
   end
 
   private
@@ -15,5 +15,6 @@ class OrdersController < ApplicationController
     params.require(:user_order).permit(
       :postal_code, :prefecture_id, :city, :house_number, :building, :phone_number
     ).merge(user_id: current_user.id, item_id: params[:item_id])
+  end
 
 end
