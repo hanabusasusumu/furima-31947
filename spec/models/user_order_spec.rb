@@ -43,15 +43,34 @@ RSpec.describe UserOrder, type: :model do
         @user_order.valid?
         expect(@user_order.errors.full_messages).to include("Phone number can't be blank")
       end
-      it '電話番号にハイフンがあり12桁以上だと購入できない' do
+      it '電話番号が12桁以上だと購入できない' do
+        @user_order.phone_number = '090123456789'
+        @user_order.valid?
+        expect(@user_order.errors.full_messages).to include('Phone number is invalid')
+      end
+
+      it '電話番号にハイフンがあると登録できない' do
         @user_order.phone_number = '090-1234-5678'
         @user_order.valid?
         expect(@user_order.errors.full_messages).to include('Phone number is invalid')
       end
+
       it 'tokenが空では購入できない' do
         @user_order.token = ''
         @user_order.valid?
         expect(@user_order.errors.full_messages).to include("Token can't be blank")
+      end
+
+      it 'user_idが空だと購入できない' do
+        @user_order.user_id = ""
+        @user_order.valid?
+        expect(@user_order.errors.full_messages).to include("User can't be blank")
+      end
+
+      it 'item_idが空だと購入できない' do
+        @user_order.item_id = ""
+        @user_order.valid?
+        expect(@user_order.errors.full_messages).to include("Item can't be blank")
       end
     end
   end
