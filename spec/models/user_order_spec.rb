@@ -2,12 +2,15 @@ require 'rails_helper'
 
 RSpec.describe UserOrder, type: :model do
   before do
-    @user_order = FactoryBot.build(:user_order)
+    @user = FactoryBot.create(:user)
+    @item = FactoryBot.create(:item)
+    @user_order = FactoryBot.build(:user_order, user_id: @user.id, item_id: @item.id)
+    sleep 0.1
   end
 
   describe '購入情報' do
     context '購入できるとき' do
-      it '建物名以外のすべての欄が入力されていれば購入できる' do
+      it 'すべての欄が入力されていれば購入できる' do
         expect(@user_order).to be_valid
       end
     end
