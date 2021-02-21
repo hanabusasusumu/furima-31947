@@ -10,7 +10,7 @@ RSpec.describe UserOrder, type: :model do
 
   describe '購入情報' do
     context '購入できるとき' do
-      it 'すべての欄が入力されていれば購入できる' do
+      it '建物名が空でもすべての欄が入力されていれば購入できる' do
         expect(@user_order).to be_valid
       end
     end

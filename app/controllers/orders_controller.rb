@@ -4,9 +4,7 @@ class OrdersController < ApplicationController
 
   def index
     @user_order = UserOrder.new
-    if @item.user_id == current_user.id
-      redirect_to root_path
-    elsif @item.buy_record.present?
+    if @item.user_id == current_user.id || @item.buy_record.present?
       redirect_to root_path
     end
   end
