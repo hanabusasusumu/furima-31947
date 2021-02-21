@@ -12,6 +12,7 @@ RSpec.describe UserOrder, type: :model do
       end
     end
 
+
     context '購入できないとき' do
       it '郵便番号が空だと購入できない' do
         @user_order.postal_code = ''
@@ -62,13 +63,13 @@ RSpec.describe UserOrder, type: :model do
       end
 
       it 'user_idが空だと購入できない' do
-        @user_order.user_id = ""
+        @user_order.user_id = ''
         @user_order.valid?
         expect(@user_order.errors.full_messages).to include("User can't be blank")
       end
 
       it 'item_idが空だと購入できない' do
-        @user_order.item_id = ""
+        @user_order.item_id = ''
         @user_order.valid?
         expect(@user_order.errors.full_messages).to include("Item can't be blank")
       end

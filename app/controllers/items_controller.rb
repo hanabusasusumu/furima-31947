@@ -18,12 +18,14 @@ class ItemsController < ApplicationController
       render :new
     end
   end
-
+ 
   def show
   end
 
   def edit
-    redirect_to action: :index unless @item.user_id == current_user.id
+    if @item.buy_record.present?
+      redirect_to root_path
+    end
   end
 
   def update
